@@ -1,64 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Ashraful's Money Manager</title>
+     <!-- Vanila Css -->
+     <link rel="stylesheet" href="css/style.css">
      <!-- BootStrap -->
      <link rel="stylesheet" href="css/bootstrap.min.css">
-     <link rel="stylesheet" href="css/style.css">
+     
 </head>
+
 <body>
      <header>
           <h1 class="text-center text-danger my-5 fw-bold">Ashraful's Money Manager</h1>
-     </header> 
+     </header>
 
      <main>
           <section class="container mb-5">
                <div class="row gx-5">
+                    <!-- Image Part -->
                     <div class="col-lg-6">
-                         <img class="w-100 h-100" src="images/definitions-of-money-1024x683.jpeg" alt="">
+                         <img class="w-100 h-100 rounded" src="images/definitions-of-money-1024x683.jpeg" alt="">
                     </div>
+
+                    <!-- Main Section Part -->
+
+                    <!-- INCOME -->
                     <div class="col-lg-6 bg-light p-5 rounded d-flex flex-column align-items-center">
                          <div class="text-center">
                               <h2 class="mb-4">Income</h2>
                               <div class="d-flex justify-content-center align-items-center">
                                    <h5 class="me-3">Income:</h5>
-                                   <input class="px-2 me-4 bg border-0 bg-gray rounded" type="text" id="income-input">
+                                   <input class="px-2 me-4 bg border-0 bg-gray rounded" type="number" id="income-input" value="0">
                               </div>
-                              <h6 id="income-error" class="text-center text-danger d-none">Please Give a valid positive Number</h6>
+                              
                          </div>
+
+                         <!-- EXPENSES PART -->
+
                          <div>
                               <h2 class="text-center my-4">Expenses</h2>
+
+                              <!--------- FOOD --------->
+
                               <div class="d-flex justify-content-center align-items-center my-3">
                                    <h5 class="me-3">Food:</h5>
-                                   <input class="px-2 me-1 bg border-0 bg-gray rounded" type="text" id="income-input">
+                                   <input id="food-input" class="px-2 me-1 bg border-0 bg-gray rounded" type="number" value="0" >
                               </div>
-                              <h6 id="food-error" class="text-center text-danger d-none">Please Give a valid positive Number</h6>
+                              
+
+                              <!--------- RENT --------->
+
                               <div class="d-flex justify-content-center align-items-center my-3">
                                    <h5 class="me-3">Rent:</h5>
-                                   <input class="px-2 bg border-0 bg-gray rounded outline-danger" type="text" id="income-input">
+                                   <input class="px-2 bg border-0 bg-gray rounded outline-danger" type="number"
+                                        id="rent-input" value="0">
                               </div>
-                              <h6 id="rent-error" class="text-center text-danger d-none">Please Give a valid positive Number</h6>
+                              
+
+                              <!------- CLOTHES -------->
+
                               <div class="d-flex justify-content-center align-items-center my-3">
                                    <h5 class="me-3">Clothes:</h5>
-                                   <input class="px-2 me-4 bg border-0 bg-gray rounded" type="text" id="income-input">
+                                   <input class="px-2 me-4 bg border-0 bg-gray rounded" type="number" id="clothes-input" value="0">
                               </div>
-                              <h6 id="clothes-error" class="text-center text-danger d-none">Please Give a valid positive Number</h6>
+                              
                          </div>
-                         <button class="my-3 btn btn-primary btn-lg">Calculate</button>
-                         <h3 class="my-3">Total Expenses: <span id="expenses-total">0</span></h3>
-                         <h4 class="my-2">Total Balance: <span id="Balance-total">0</span></h4>
-                         <div class="mt-5 d-flex justify-content-center align-items-center">
+                         <button id="calculate-button" class="my-3 btn btn-primary btn-lg">Calculate</button>
+
+                         <!----------- CALCULATION PART ------------>
+
+                         <h3 class="mt-3">Total Expenses: <span id="expenses-total">0</span> </h3>
+                         <h6 id="expenses-error" class="text-center text-danger">Please Give a valid positive
+                              Number or 0</h6>
+                         <h6 id="expenses-add-error" class="text-center text-danger">You don't have enough Money</h6>
+                         <h3 class="my-3">Balance: <span id="balance-total">0</span></h3>
+                         <h6 id="balance-error" class="text-center text-danger">Please Give a valid positive
+                              Number or 0</h6>
+
+                         <!------------- SAVINGS PART ------------>
+
+                         <div>
+                              <h4 class="mt-5 mb-4 text-primary">Percent you want to save from your Income</h4 >
+                         </div>
+                         <div class=" d-flex justify-content-center align-items-center">
                               <h2 class="me-4">Save:</h2>
-                              <input class="text-center p-2 w-25 bg border-0 bg-gray" type="text" id="income-input">
+                              <input class="text-center p-2 w-25 bg border-0 bg-gray" type="number" id="savings-input" value="0">
                               <h2 class="mx-3">%</h2>
-                              <button class="btn btn-primary px-4">Save</button>
+                              <button id="savings-button" class="btn btn-primary px-4">Save</button>
                          </div>
-                         <h6 id="percent-error" class="text-center text-danger d-none">Please Give a valid positive Number</h6>
+                         <h6 id="percent-error" class="text-center text-danger">Please Give a valid positive
+                              Number or 0</h6>
+
+                         <!--------- SAVINGS CALCULAION ---------->
+
                          <h3 class="mt-5">Saving Amount: <span id="saving-amount">0</span></h3>
-                         <h2>Remaining Balance: <span id="saving-amount">0</span></h2>
+                         <h2 class="mt-2">Remaining Balance: <span id="remaining-balance">0</span></h2>
+                         <h6 id="saving-amount-error" class="text-center text-danger">You don't have enough Money</h6>
                     </div>
                </div>
           </section>
@@ -67,4 +108,5 @@
 
      <script src="js/script.js"></script>
 </body>
+
 </html>
