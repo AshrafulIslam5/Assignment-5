@@ -81,3 +81,39 @@ document.getElementById('calculate-button').addEventListener('click', function (
 
 });
 
+
+// additional function for finding percentage
+function findPercent(num1, num2) {
+     // percent = 1/100
+     const percent = num1 * num2 / 100;
+     return percent;
+}
+
+// savings calculation
+document.getElementById('savings-button').addEventListener('click', function () {
+     const savings = getValue('savings-input');
+     const income = getValue('income-input');
+     const savingAmount = document.getElementById('saving-amount');
+     const balance = document.getElementById('balance-total');
+     const remainingBalance = document.getElementById('remaining-balance');
+     const saved = findPercent(income, savings);
+     savingAmount.innerText = saved;
+     remainingBalance.innerText = balance.innerText - savingAmount.innerText;
+
+     percentError.style.display = "none";
+     savingAmountError.style.display = "none";
+
+     if (savings < 0) {
+          percentError.style.display = "block";
+          savingAmount.innerText = 0;
+          remainingBalance.innerText = 0;
+     }
+     else if (savingAmount.innerText > balance.innerText || savings > 99) {
+          savingAmountError.style.display = "block";
+          savingAmount.innerText = 0;
+          remainingBalance.innerText = 0;
+     }
+
+});
+
+
